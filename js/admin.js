@@ -1,4 +1,5 @@
 import{Serie} from './serieClass.js';
+import{validarCodigo, validarGenero, validarTitulo, validarUrl} from './validaciones.js';
 
 // traemos los elementos que nos interesan del html
 let codigo = document.getElementById('codigo')
@@ -10,6 +11,12 @@ let formulario = document.getElementById('formSeries')
 let listaSeries = [];
 
 // tarea agregar las validaciones
+codigo.addEventListener('blur', ()=>{validarCodigo(codigo)});
+titulo.addEventListener('blur', ()=>{validarTitulo(2, 20, titulo)});
+descripcion.addEventListener('blur', ()=>{validarTitulo(2, 200, descripcion)});
+imagen.addEventListener('blur', ()=>{validarUrl(imagen)});
+genero.addEventListener('change', ()=>{validarGenero(genero)});
+
 
 formulario.addEventListener('submit', crearSerie);
 

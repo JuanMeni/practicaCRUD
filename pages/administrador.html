@@ -69,7 +69,7 @@
       <section class="mt-5">
         <h2 class="display-6">Lista de series</h2>
         <hr />
-        <article class="table-responsive">
+        <article class="table-responsive d-inline-block">
           <table class="table">
             <thead>
               <tr>
@@ -85,11 +85,12 @@
               <tr>
                 <th scope="row">1</th>
                 <td>Robotech</td>
-                <td>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ratione, placeat?
+                <td class="text-truncate" style="max-width: 500px;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Voluptas numquam, nesciunt vero aspernatur consequuntur nemo
+                  animi molestiae dolore incidunt voluptates?
                 </td>
-                <td>
+                <td class="text-truncate" style="max-width: 500px;">
                   https://icons.getbootstrap.com/icons/clipboard2-plus-fill/
                 </td>
                 <td>Accion</td>
@@ -129,13 +130,16 @@
               <div class="mb-3">
                 <label for="codigo">Codigo</label>
                 <input
-                  type="text"
+                  type="number"
                   id="codigo"
                   class="form-control"
                   placeholder="123"
                   maxlength="5"
                   minlength="1"
                 />
+                <div class="invalid-feedback">
+                  Ingrese los datos correspondientes.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="titulo">Titulo</label>
@@ -144,9 +148,12 @@
                   id="titulo"
                   class="form-control"
                   placeholder="Ej. Robotech"
-                  maxlength="10"
-                  minlength="1"
+                  maxlength="20"
+                  minlength="2"
                 />
+                <div class="invalid-feedback">
+                  Ingrese los datos correspondientes.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="descripcion">Descripcion</label>
@@ -159,6 +166,9 @@
                   minlength="2"
                 >
                 </textarea>
+                <div class="invalid-feedback">
+                  Ingrese los datos correspondientes.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="imagen">Imagen</label>
@@ -170,6 +180,9 @@
                   maxlength="120"
                   minlength="2"
                 />
+                <div class="invalid-feedback">
+                  Ingrese los datos correspondientes.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="genero">Genero</label>
@@ -180,8 +193,13 @@
                   <option value="comedia">Comedia</option>
                   <option value="aventura">Aventura</option>
                 </select>
+                <div class="invalid-feedback">
+                  Ingrese los datos correspondientes.
+                </div>
               </div>
-              <button type="submit" class="btn btn-outline-primary my-3">Enviar</button>
+              <button type="submit" class="btn btn-outline-primary my-3">
+                Enviar
+              </button>
             </form>
           </div>
         </div>
