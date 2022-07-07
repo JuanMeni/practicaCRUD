@@ -2,12 +2,13 @@ import{Serie} from './serieClass.js';
 import{validarCodigo, validarGenero, validarTitulo, validarUrl} from './validaciones.js';
 
 // traemos los elementos que nos interesan del html
-let codigo = document.getElementById('codigo')
-let titulo = document.getElementById('titulo')
-let descripcion = document.getElementById('descripcion')
-let imagen = document.getElementById('imagen')
-let genero = document.getElementById('genero')
-let formulario = document.getElementById('formSeries')
+let codigo = document.getElementById('codigo');
+let titulo = document.getElementById('titulo');
+let descripcion = document.getElementById('descripcion');
+let imagen = document.getElementById('imagen');
+let genero = document.getElementById('genero');
+let formulario = document.getElementById('formSeries');
+let btnCrearSerie = document.getElementById('btnCrearSerie');
 const modalAdminSerie = new bootstrap.Modal(document.getElementById('modalSeries'));
 console.log(modalAdminSerie);
 
@@ -15,11 +16,15 @@ console.log(modalAdminSerie);
 let listaSeries = JSON.parse(localStorage.getItem('listaSeriesKey')) || [];
 
 // tarea agregar las validaciones
+formulario.addEventListener('submit', crearSerie);
 codigo.addEventListener('blur', ()=>{validarCodigo(codigo)});
 titulo.addEventListener('blur', ()=>{validarTitulo(2, 20, titulo)});
 descripcion.addEventListener('blur', ()=>{validarTitulo(2, 200, descripcion)});
 imagen.addEventListener('blur', ()=>{validarUrl(imagen)});
 genero.addEventListener('change', ()=>{validarGenero(genero)});
+btnCrearSerie.addEventListener('click', ()=>{
+    modalAdminSerie.show();
+})
 
 // Funcion para generar un codigo unico para el "codigo"
 // let array = []
@@ -34,7 +39,6 @@ genero.addEventListener('change', ()=>{validarGenero(genero)});
 
 //codigo.innerHTML = `${array}`
 
-formulario.addEventListener('submit', crearSerie);
 
 function crearSerie(e){
     e.preventDefault()
@@ -48,6 +52,7 @@ function crearSerie(e){
     // guardar la lista de series en localStorage
     guardarListaSeries()
     // cerrar modal que administra la serie
+    modalAdminSerie.hide();
 
 }
 
