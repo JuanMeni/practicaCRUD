@@ -30,7 +30,7 @@ export function validarGenero(input){
 }
 
 export function validarUrl(input){
-    let patron = /^((http|https):\/\/)?([a-z0-9_-]+\.){1,2}[a-z]{2,6}(\.[a-z]{2,6})$/
+    let patron = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig
     if(patron.test(input.value.trim())){
         input.className = 'form-control is-valid';
         return true;

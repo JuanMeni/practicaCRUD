@@ -8,7 +8,11 @@ let descripcion = document.getElementById('descripcion')
 let imagen = document.getElementById('imagen')
 let genero = document.getElementById('genero')
 let formulario = document.getElementById('formSeries')
-let listaSeries = [];
+const modalAdminSerie = new bootstrap.Modal(document.getElementById('modalSeries'));
+console.log(modalAdminSerie);
+
+// si hay algo en el localStorage traer esos datos, si no hay nda listaSeries tiene que ser una []
+let listaSeries = JSON.parse(localStorage.getItem('listaSeriesKey')) || [];
 
 // tarea agregar las validaciones
 codigo.addEventListener('blur', ()=>{validarCodigo(codigo)});
@@ -17,6 +21,18 @@ descripcion.addEventListener('blur', ()=>{validarTitulo(2, 200, descripcion)});
 imagen.addEventListener('blur', ()=>{validarUrl(imagen)});
 genero.addEventListener('change', ()=>{validarGenero(genero)});
 
+// Funcion para generar un codigo unico para el "codigo"
+// let array = []
+// let limite = 1
+
+// while(array.length < limite){
+//     let numero = Math.floor(Math.random()*1001)
+//     if(!array.includes(numero)){
+//         array.push(numero)
+//     }
+// }
+
+//codigo.innerHTML = `${array}`
 
 formulario.addEventListener('submit', crearSerie);
 
@@ -29,8 +45,17 @@ function crearSerie(e){
     listaSeries.push(nuevaSerie);
     // limpiar el formulario
     limpiarFormulario();
+    // guardar la lista de series en localStorage
+    guardarListaSeries()
+    // cerrar modal que administra la serie
+
 }
 
 function limpiarFormulario(){
     formulario.reset();
+    // si usamos las clases isvalid o is-invalid de bootstrap hay que resetearlas
+}
+
+function guardarListaSeries(){
+    localStorage.setItem('listaSeriesKey',JSON.stringify(listaSeries));
 }
