@@ -55,7 +55,7 @@ function crearSerie(e){
     modalAdminSerie.hide();
     Swal.fire(
         'Serie creada',
-        'La serie se creo exitosamente'g,
+        'La serie se creo exitosamente',
         'success'
       )
 
